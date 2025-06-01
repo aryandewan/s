@@ -6,19 +6,26 @@ import Image from "next/image";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import Link from "next/link";
+import Number from "@/conponents/number";
 gsap.registerPlugin(useGSAP)
 
 const Page = () => {
     const ImageRef = useRef<HTMLImageElement>(null)
     const ShaktiRef = useRef<HTMLImageElement>(null)
     const [generated, setGenerated] = useState(false)
+    const [showNumber, setShowNumber] = useState(false)
 
     const fadeOut = () => {
         gsap.to(ImageRef.current, {
             duration: 4,
             opacity: 0,
             delay: 2,
-            onComplete: () => setGenerated(true),
+            onComplete: () => {
+                setGenerated(true)
+                setTimeout(() => {
+                    setShowNumber(true)
+                }, 5000)
+            },
         })
     }
 
@@ -48,7 +55,8 @@ const Page = () => {
     }, [])
 
     return (
-        <section className={`min-h-dvh w-full flex flex-col gap-10 items-center justify-center ${mono.className}`}>
+        <section className={`min-h-dvh w-full flex flex-col gap-10 items-center justify-center ${mono.className} relative bg-black`}>
+            {showNumber ? <Number setShowNumber = {setShowNumber}/> : null}
             <div className="relative w-[200px] h-[320px] overflow-hidden">
                 <Image
                     ref={ShaktiRef}
