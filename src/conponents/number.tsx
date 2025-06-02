@@ -23,9 +23,8 @@ const Number = ({setShowNumber}: Props) => {
 
     const responses = [
         "Can I get your number?",
-        "I'll send you Good Morning everyday! Promise!",
-        "Still no? I can make my ROTI GOL ✨😂",
-        "C'mon now, Please?"
+        "I'll send you Good Morning everyday 😁",
+        "I'll have your pictures in my wallet 🫶",
     ];
 
     const widthYes = [
